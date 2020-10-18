@@ -76,7 +76,13 @@ function displayProducts(){
         $returnString .= "<tr>
                             <td> {$product->getName()} </td>
                             <td> ".number_format((float)$product->getPrice(), 2, '.', '')." </td>
-                            <td> <a> Add To Cart</a></td>
+                            <td> 
+                            <form action='main.php' method='post'>
+                            <input type='hiddin' name='name' value='".$product->getName()."' ><br>
+                            <input type='hidden' name='price' value='".number_format((float)$product->getPrice(), 2, '.', '')."'><br>
+                            <input type='submit' value='Add to Cart'>
+                            </form>
+                            </td>
                         </tr>";
      } 
 
