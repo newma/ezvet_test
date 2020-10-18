@@ -4,9 +4,16 @@ class Product {
     protected $price;
 
     //standard constructor
-    function _construct(){
-        $this->name = '';
-        $this->price = '';
+    function _construct($name, $price){
+        $this->name = $name;
+        $this->price = $price;
+    }
+
+    public function getName(){
+        return $this->name;
+    }
+    public function getPrice(){
+        return $this->price;
     }
 
     public static function getList() {
@@ -20,8 +27,15 @@ class Product {
         ];
         // ########################################################
 
-        return json_encode($products);
+        //return json_encode($products);
 
+        foreach ( $products as $row ) {
+            $product = new Product();
+            $product->name = $row['name'];
+            $product->price = $row['price'];
+            $list[] = $product;
+        }
+        return $list;
       }
     
 
