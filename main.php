@@ -78,7 +78,7 @@ function displayProducts(){
                             <td> ".number_format((float)$product->getPrice(), 2, '.', '')." </td>
                             <td> 
                             <form action='main.php' method='post'>
-                            <input type='hiddin' name='name' value='".$product->getName()."' ><br>
+                            <input type='hidden' name='name' value='".$product->getName()."' ><br>
                             <input type='hidden' name='price' value='".number_format((float)$product->getPrice(), 2, '.', '')."'><br>
                             <input type='submit' value='Add to Cart'>
                             </form>
@@ -110,5 +110,7 @@ function addToCart($product, $quantity){
     $cart->addProducts($product, $_POST['quantity']);
     
     $_SESSION['cart'] = $cart;
+    header( "Location: index.html" );
+    exit;
 }
 ?>
